@@ -51,12 +51,18 @@
 
   // Call the function when the page loads
   window.onload = changeTitleAndH1;
+  document.addEventListener('click', function() {
+  var audio = document.getElementById('myAudio');
+  if (audio.paused) {
+    audio.play();
+  }
+});
 </script>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
   <button type="button">Click Me!</button>
-  <audio autoplay loop>
+  <audio id="myAudio" autoplay loop>
         <source src="src/audio/1.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
