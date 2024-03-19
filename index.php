@@ -61,7 +61,6 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <button type="button">Click Me!</button>
   <audio id="myAudio" autoplay loop>
         <source src="src/audio/1.wav" type="audio/wav">
         Your browser does not support the audio element.
