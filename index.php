@@ -55,6 +55,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+  <iframe src="silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
   <audio autoplay loop>
         <source src="src/audio/1.wav" type="audio/wav">
         Your browser does not support the audio element.
