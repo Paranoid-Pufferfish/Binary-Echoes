@@ -55,7 +55,11 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <embed src=./src/audio/1.wav loop="true" hidden="true" autostart="true"></embed>
+  <audio autoplay loop>
+        <source src="src/audio/1.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
     <div class="glitch-container">
         <h1 class="glitch"><span>It's moving...It's</span></h1>
         <h1 class="glitchy-h1"><span>alive</span></h1>
