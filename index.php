@@ -8,7 +8,7 @@
 <script>
   // Function to generate a random glitchy string
   function generateGlitchyString(length) {
-    const characters = "▒░▓█╢┼ЁжЊ╘Д╙╡ЅЖЖЖЖЖД█▓▒░╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟↔▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟↔▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟↔▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟↔▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟↔▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟↔▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟↔▲▼►◄┼";
+    const characters = "▒░▓█╢┼ЁжЊ╘Д╙╡ЅЖЖЖЖЖД█▓▒░╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟▲▼►◄┼╔╗╚╝■▀▄▌▐§▬↨↑↓→←∟▲▼►◄┼";
     let result = "";
     for (let i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * characters.length));
