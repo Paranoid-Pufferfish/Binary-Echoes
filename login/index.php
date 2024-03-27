@@ -1,6 +1,4 @@
 <?php
-// Start session
-session_start();
 
 // Check if session is active
 if (isset($_SESSION['authenticated']) || $_SESSION['authenticated'] == true) {
