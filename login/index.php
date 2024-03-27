@@ -1,3 +1,13 @@
+<?php
+// Start session
+session_start();
+
+// Check if session is active
+if (isset($_SESSION['authenticated']) || $_SESSION['authenticated'] == true) {
+    header("Location: game.php"); // Redirect to login page if not logged in
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
