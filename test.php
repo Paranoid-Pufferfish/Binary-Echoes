@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Prepare SQL statement to retrieve user with provided id and password
-    $stmt = $conn->prepare("SELECT * FROM Teams WHERE id = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT * FROM Team WHERE id = ? AND password = ?");
     $stmt->bind_param("ss", $id, $password);
 
     // Execute the prepared statement
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['authenticated'] = true;
 
         // Update lastLogin entry
-        $updateStmt = $conn->prepare("UPDATE Teams SET lastLogin = NOW() WHERE id = ?");
+        $updateStmt = $conn->prepare("UPDATE Team SET lastLogin = NOW() WHERE id = ?");
         $updateStmt->bind_param("s", $id);
         $updateStmt->execute();
 
