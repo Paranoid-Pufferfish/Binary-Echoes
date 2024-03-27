@@ -2,11 +2,11 @@
 // Start session
 session_start();
 
-// Check if session is active
-if (isset($_SESSION['user_id'])) {
-    // Redirect to game.php
-    header('Location: game.php');
-    exit; // Ensure that script stops executing after redirect
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+}
+else {
+  header("Location: game.php");
+  exit();
 }
 ?>
 <!DOCTYPE html>
