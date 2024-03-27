@@ -1,42 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter Details</title>
-</head>
-<body>
-    <h1>Chapter Details</h1>
-    <label for="chapterId">Enter Chapter ID:</label>
-    <input type="text" id="chapterId" name="chapterId">
-    <button onclick="fetchChapterDetails()">Fetch Details</button>
-    <div id="chapterDetails"></div>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    <script>
-        // Function to fetch chapter details from the API
-        function fetchChapterDetails() {
-            const chapterId = document.getElementById('chapterId').value;
-            fetch('fetch.php?id=' + chapterId)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch chapter details: ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Display chapter details
-                const chapterDetailsElement = document.getElementById('chapterDetails');
-                chapterDetailsElement.innerHTML = `
-                    <p><strong>Description:</strong> ${data.Description}</p>
-                    <p><strong>Journal URL:</strong> <a href="${data.JournalURL}" target="_blank">${data.JournalURL}</a></p>
-                `;
-            })
-            .catch(error => {
-                console.error('Error fetching chapter details:', error.message);
-                const chapterDetailsElement = document.getElementById('chapterDetails');
-                chapterDetailsElement.innerHTML = `<p>Error fetching chapter details: ${error.message}</p>`;
-            });
-        }
-    </script>
-</body>
-</html>
+$host = "srv1160.hstgr.io";
+$username = "u209047910_echoes";
+$password = "Echoes123#";
+$database = "u209047910_echoes";
+
+
+// Establish database connection
+$conn = new mysqli($host, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Prepare SQL statement to retrieve chapter data by ID
+$stmt = $conn->prepare("SELECT description, journalUrl, id FROM Chapter WHERE id = ?");
+$stmt->bind_param("s", $chapter_id); // Assuming Chapter ID is a varchar
+$chapter_id = "Chapter1"; // Chapter ID to retrieve
+
+// Execute the prepared statement
+$stmt->execute();
+
+// Store the result
+$result = $stmt->get_result();
+
+// Check if a matching chapter is found
+if ($result->num_rows == 1) {
+    // Fetch data
+    $chapter_data = $result->fetch_assoc();
+
+    // Close statement
+    $stmt->close();
+
+    // Close connection
+    $conn->close();
+
+    // Output chapter data
+    echo "<h1>Chapter Details</h1>";
+    echo "<p><strong>ID:</strong> " . $chapter_data['id'] . "</p>";
+    echo "<p><strong>Description:</strong> " . $chapter_data['description'] . "</p>";
+    echo "<p><strong>Journal URL:</strong> <a href='" . $chapter_data['journalUrl'] . "' target='_blank'>" . $chapter_data['journalUrl'] . "</a></p>";
+} else {
+    // Chapter not found
+    echo "Chapter not found";
+}
+
+?>
