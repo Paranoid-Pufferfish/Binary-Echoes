@@ -16,7 +16,7 @@
         // Function to fetch chapter details from the API
         function fetchChapterDetails() {
             const chapterId = document.getElementById('chapterId').value;
-            fetch('api.php?id=' + chapterId)
+            fetch('fetch.php?id=' + chapterId)
             .then(response => response.json())
             .then(data => {
                 // Display chapter details
