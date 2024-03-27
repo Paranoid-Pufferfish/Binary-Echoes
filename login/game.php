@@ -47,6 +47,7 @@ $teamID = $_SESSION['id']; // Assuming the TeamID is stored in the session varia
         </div>
         <div class="footer">
             <p><span style="font-family: 'Poppins';">© 2024 Binary World Bejaia</span></p>
+<p>Connected TeamID: <?php echo $teamID; ?></p>
         </div>
 
     </div>
