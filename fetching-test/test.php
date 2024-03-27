@@ -13,10 +13,11 @@
     <div id="chapterDetails"></div>
 
     <script>
-     const boutton = document.getElementById('fetchdetail');
+        const boutton = document.getElementById('fetchdetail');
+        
         function fetchChapterDetails() {
             const chapterId = document.getElementById('chapterId').value;
-            const url = 'index.php?id=${chapterId}';
+            const url = `index.php?id=${chapterId}`;
 
             fetch(url)
                 .then(response => {
@@ -33,20 +34,21 @@
 
                     // Display chapter details
                     const chapterDetailsElement = document.getElementById('chapterDetails');
-                    chapterDetailsElement.innerHTML = '
+                    chapterDetailsElement.innerHTML = `
                         <h2>Chapter Details</h2>
                         <p><strong>ID:</strong> ${data.id}</p>
                         <p><strong>Description:</strong> ${data.description}</p>
                         <p><strong>Journal URL:</strong> <a href="${data.journalUrl}" target="_blank">${data.journalUrl}</a></p>
-                    ';
+                    `;
                 })
                 .catch(error => {
                     console.error('Error fetching chapter details:', error);
                     const chapterDetailsElement = document.getElementById('chapterDetails');
-                    chapterDetailsElement.innerHTML = '<p>Error fetching chapter details: ${error.message}</p>';
+                    chapterDetailsElement.innerHTML = `<p>Error fetching chapter details: ${error.message}</p>`;
                 });
         }
-boutton.addEventListener("click", fetchChapterDetails);
+
+        boutton.addEventListener("click", fetchChapterDetails);
     </script>
 </body>
 </html>
