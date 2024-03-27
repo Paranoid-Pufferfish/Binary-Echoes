@@ -22,8 +22,8 @@ if (isset($_GET['id'])) {
     $chapter_id = $_GET['id'];
 
     // Prepare SQL statement to retrieve chapter data by ID
-    $stmt = $conn->prepare("SELECT Description, JournalURL FROM Chapter WHERE id = ?");
-    $stmt->bind_param("i", $chapter_id); // Assuming Chapter ID is an integer
+    $stmt = $conn->prepare("SELECT description, journalUrl FROM Chapter WHERE id = ?");
+    $stmt->bind_param("s", $chapter_id); // Assuming Chapter ID is an integer
 
     // Execute the prepared statement
     $stmt->execute();
