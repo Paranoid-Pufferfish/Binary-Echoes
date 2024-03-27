@@ -15,34 +15,40 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Prepare SQL statement to retrieve chapter data by ID
-$stmt = $conn->prepare("SELECT description, journalUrl, id FROM Chapter WHERE id = ?");
-$stmt->bind_param("s", $chapter_id); // Assuming Chapter ID is a varchar
-$chapter_id = "Chapter1"; // Chapter ID to retrieve
+// Check if Chapter ID is provided in the GET request
+if (isset($_GET['id'])) {
+    $chapter_id = $_GET['id'];
 
-// Execute the prepared statement
-$stmt->execute();
+    // Prepare SQL statement to retrieve chapter data by ID
+    $stmt = $conn->prepare("SELECT description, journalUrl, id FROM Chapter WHERE id = ?");
+    $stmt->bind_param("s", $chapter_id); // Assuming Chapter ID is a varchar
 
-// Store the result
-$result = $stmt->get_result();
+    // Execute the prepared statement
+    $stmt->execute();
 
-// Check if a matching chapter is found
-if ($result->num_rows == 1) {
-    // Fetch data
-    $chapter_data = $result->fetch_assoc();
+    // Store the result
+    $result = $stmt->get_result();
 
-    // Close statement
-    $stmt->close();
+    // Check if a matching chapter is found
+    if ($result->num_rows == 1) {
+        // Fetch data
+        $chapter_data = $result->fetch_assoc();
 
-    // Close connection
-    $conn->close();
+        // Close statement
+        $stmt->close();
 
-    // Output chapter data as JSON
-    header('Content-Type: application/json');
-    echo json_encode($chapter_data);
+        // Close connection
+        $conn->close();
+
+        // Output chapter data as JSON
+        header('Content-Type: application/json');
+        echo json_encode($chapter_data);
+    } else {
+        // Chapter not found
+        echo json_encode(array("error" => "Chapter not found"));
+    }
 } else {
-    // Chapter not found
-    echo json_encode(array("error" => "Chapter not found"));
+    // Chapter ID not provided
+    echo json_encode(array("error" => "Chapter ID not provided"));
 }
-
 ?>
