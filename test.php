@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $updateStmt->execute();
 
         // Redirect to a secure page or perform any other action
-        header("Location: https://google.com/");
+        header("Location: /login/game.html");
         exit();
     } else {
         // Invalid credentials
