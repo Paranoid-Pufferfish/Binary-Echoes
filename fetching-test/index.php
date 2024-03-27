@@ -7,12 +7,16 @@
 </head>
 <body>
     <h1>Chapter Details</h1>
+    <label for="chapterId">Enter Chapter ID:</label>
+    <input type="text" id="chapterId" name="chapterId">
+    <button onclick="fetchChapterDetails()">Fetch Details</button>
     <div id="chapterDetails"></div>
 
     <script>
         // Function to fetch chapter details from the API
-        function fetchChapterDetails(chapterId) {
-            fetch('fetch.php?id=' + chapterId)
+        function fetchChapterDetails() {
+            const chapterId = document.getElementById('chapterId').value;
+            fetch('api.php?id=' + chapterId)
             .then(response => response.json())
             .then(data => {
                 // Display chapter details
@@ -29,9 +33,6 @@
                 chapterDetailsElement.innerHTML = `<p>Error fetching chapter details</p>`;
             });
         }
-
-        // Call the fetchChapterDetails function with a specific chapter ID (example)
-        fetchChapterDetails(1); // Replace 1 with the desired chapter ID
     </script>
 </body>
 </html>
