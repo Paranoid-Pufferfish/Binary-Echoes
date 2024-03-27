@@ -19,7 +19,7 @@
             fetch('fetch.php?id=' + chapterId)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Failed to fetch chapter details');
+                    throw new Error('Failed to fetch chapter details: ' + response.statusText);
                 }
                 return response.json();
             })
@@ -27,13 +27,12 @@
                 // Display chapter details
                 const chapterDetailsElement = document.getElementById('chapterDetails');
                 chapterDetailsElement.innerHTML = `
-                    <p><strong>ID:</strong> ${data.id}</p>
                     <p><strong>Description:</strong> ${data.Description}</p>
                     <p><strong>Journal URL:</strong> <a href="${data.JournalURL}" target="_blank">${data.JournalURL}</a></p>
                 `;
             })
             .catch(error => {
-                console.error('Error fetching chapter details:', error);
+                console.error('Error fetching chapter details:', error.message);
                 const chapterDetailsElement = document.getElementById('chapterDetails');
                 chapterDetailsElement.innerHTML = `<p>Error fetching chapter details: ${error.message}</p>`;
             });

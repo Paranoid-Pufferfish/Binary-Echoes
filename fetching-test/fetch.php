@@ -10,10 +10,12 @@ $database = "u209047910_echoes";
 
 // Establish database connection
 $conn = new mysqli($host, $username, $password, $database);
-
-// Check connection
+/ Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $error_message = "Connection failed: " . $conn->connect_error;
+    http_response_code(500);
+    echo json_encode(array("error" => $error_message));
+    exit();
 }
 
 // Check if the Chapter ID is provided in the GET request
@@ -22,10 +24,22 @@ if (isset($_GET['id'])) {
 
     // Prepare SQL statement to retrieve chapter data by ID
     $stmt = $conn->prepare("SELECT description, JournalUrl FROM Chapter WHERE id = ?");
+    if (!$stmt) {
+        $error_message = "Prepare statement error: " . $conn->error;
+        http_response_code(500);
+        echo json_encode(array("error" => $error_message));
+        exit();
+    }
     $stmt->bind_param("s", $chapter_id); // Assuming Chapter ID is a varchar
 
     // Execute the prepared statement
-    $stmt->execute();
+    $result = $stmt->execute();
+    if (!$result) {
+        $error_message = "Execute statement error: " . $stmt->error;
+        http_response_code(500);
+        echo json_encode(array("error" => $error_message));
+        exit();
+    }
 
     // Store the result
     $result = $stmt->get_result();
