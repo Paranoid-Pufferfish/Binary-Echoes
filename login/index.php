@@ -1,9 +1,12 @@
 <?php
+// Start session
+session_start();
 
 // Check if session is active
-if (isset($_SESSION['authenticated']) || $_SESSION['authenticated'] == true) {
-    header("Location: game.php"); // Redirect to login page if not logged in
-    exit();
+if (isset($_SESSION['user_id'])) {
+    // Redirect to game.php
+    header('Location: game.php');
+    exit; // Ensure that script stops executing after redirect
 }
 ?>
 <!DOCTYPE html>
