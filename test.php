@@ -20,7 +20,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
 }
-
+else {
+    echo "Connexion reussite a la base de données MySQL";
+}
 
 $sql = "SELECT * FROM Team WHERE id = '$id' AND password = '$password'";
 $result = $conn->query($sql);
