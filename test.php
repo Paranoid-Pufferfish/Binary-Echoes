@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -21,7 +20,7 @@ if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
 }
 else {
-    echo "Connexion reussite a la base de données MySQL";
+    echo "Connexion reussite a la base de données MySQL" ;
 }
 
 $sql = "SELECT * FROM Team WHERE id = '$id' AND password = '$password'";
@@ -46,7 +45,11 @@ if ($result->num_rows > 0) {
 
     echo "ID ou mot de passe incorrect.";
 }
-
+if ($exist==true) {
+    header("location:login/game.html");
+} else {
+    header("location:login/index.html");
+}
 
 $conn->close();
 ?>
