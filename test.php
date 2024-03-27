@@ -1,48 +1,59 @@
 <?php
-
 session_start();
 
-
-$servername = "srv1160.hstgr.io";
+$host = "srv1160.hstgr.io";
 $username = "u209047910_echoes";
 $password = "Echoes123#";
-$dbname = "u209047910_echoes";
+$database = "u209047910_echoes";
 
+// Establish database connection
+$conn = new mysqli($host, $username, $password, $database);
 
-$id = $_POST['id'];
-$password = $_POST['password'];
-
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
+// Check connection
 if ($conn->connect_error) {
-    die("Connexion échouée : " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
-    echo "Connexion reussite a la base de données MySQL" ;
 
-$sql = "SELECT * FROM Team WHERE id = '$id' AND password = '$password'";
-$result = $conn->query($sql);
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get input from login form
+    $id = $_POST['id'];
+    $password = $_POST['password'];
 
+    // Prepare SQL statement to retrieve user with provided id and password
+    $stmt = $conn->prepare("SELECT * FROM Teams WHERE id = ? AND password = ?");
+    $stmt->bind_param("ss", $id, $password);
 
-if ($result->num_rows > 0) {
+    // Execute the prepared statement
+    $stmt->execute();
 
-    $row = $result->fetch_assoc();
-    $_SESSION['team_id'] = $row["id"]; // Stocker l'ID de l'équipe dans la session
+    // Store the result
+    $result = $stmt->get_result();
 
-    // Mettre à jour la dernière connexion de l'équipe
-    $teamId = $row["id"];
-    $date = date("Y-m-d");
-    $updateSql = "UPDATE Team SET lastLogin = '$date' WHERE id = '$teamId'";
-    if ($conn->query($updateSql) === TRUE) {
-        echo "Connexion réussie ! Dernière connexion mise à jour.";
+    // Check if a matching user is found
+    if ($result->num_rows == 1) {
+        // User authenticated successfully
+        // Start a session and set session variables
+        $_SESSION['id'] = $id;
+        $_SESSION['authenticated'] = true;
+
+        // Update lastLogin entry
+        $updateStmt = $conn->prepare("UPDATE Teams SET lastLogin = NOW() WHERE id = ?");
+        $updateStmt->bind_param("s", $id);
+        $updateStmt->execute();
+
+        // Redirect to a secure page or perform any other action
+        header("Location: success.php");
+        exit();
     } else {
-        echo "Erreur lors de la mise à jour de la dernière connexion : " . $conn->error;
+        // Invalid credentials
+        echo "Invalid credentials. Please try again.";
     }
-} else {
 
-    echo "ID ou mot de passe incorrect.";
+    // Close statement
+    $stmt->close();
 }
 
+// Close connection
 $conn->close();
 ?>
