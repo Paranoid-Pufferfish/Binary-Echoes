@@ -43,11 +43,6 @@ if ($result->num_rows > 0) {
 
     echo "ID ou mot de passe incorrect.";
 }
-if ($exist==true) {
-    header("location:/login/game.html");
-} else {
-    header("location:/login/index.html");
-}
 
 $conn->close();
 ?>
