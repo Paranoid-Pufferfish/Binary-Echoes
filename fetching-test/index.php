@@ -7,7 +7,6 @@ $username = "u209047910_echoes";
 $password = "Echoes123#";
 $database = "u209047910_echoes";
 
-
 // Establish database connection
 $conn = new mysqli($host, $username, $password, $database);
 
@@ -38,14 +37,12 @@ if ($result->num_rows == 1) {
     // Close connection
     $conn->close();
 
-    // Output chapter data
-    echo "<h1>Chapter Details</h1>";
-    echo "<p><strong>ID:</strong> " . $chapter_data['id'] . "</p>";
-    echo "<p><strong>Description:</strong> " . $chapter_data['description'] . "</p>";
-    echo "<p><strong>Journal URL:</strong> <a href='" . $chapter_data['journalUrl'] . "' target='_blank'>" . $chapter_data['journalUrl'] . "</a></p>";
+    // Output chapter data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($chapter_data);
 } else {
     // Chapter not found
-    echo "Chapter not found";
+    echo json_encode(array("error" => "Chapter not found"));
 }
 
 ?>
