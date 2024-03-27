@@ -1,0 +1,109 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(image/background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.container h1 img {
+    height: 40%;
+    width: 40%;
+}
+
+.main {
+    padding: 15px;
+}
+
+.container {
+    height: 358px;
+    width: 271px;
+    padding: 16px;
+    padding-top: 25px;
+    background-color: rgba(255, 255, 255, 0.068);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 2px solid rgba(95, 120, 126, 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.528)
+}
+
+.login h1 {
+    text-align: center;
+}
+
+.container .input {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+
+}
+
+.input input {
+    width: 100%;
+    height: 100%;
+    background: rgba(68, 98, 105, 100%);
+    border: none;
+    border-radius: 8px;
+    border: 1px solid rgba(95, 120, 126, 100%);
+    font-size: larger;
+}
+
+
+input::placeholder {
+    color: rgba(245, 245, 245, 0.622);
+    padding-left: 16px;
+}
+
+
+.container .button {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+
+}
+
+.button button {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(229, 185, 57, 100%);
+    border: none;
+    border-radius: 8px;
+    border: 1px solid rgba(172, 139, 43, 100%);
+    font-weight: bolder;
+    color: #3B2B08;
+
+}
+
+.container hr {
+    border: 1px solid rgba(54, 84, 93, 100%);
+}
+
+
+.icone {
+    text-align: center;
+    margin: 7px;
+
+}
+
+.icone a {
+    margin-left: 7px;
+    color: rgb(189, 199, 202);
+}
+
+p {
+    text-align: center;
+    font-size: smaller;
+    color: rgb(187, 197, 200);
+}
