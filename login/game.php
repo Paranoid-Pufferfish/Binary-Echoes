@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header("Location: index.php"); // Redirect to login page if not logged in
+    exit();
+}
+
+// Display the connected TeamID
+$teamID = $_SESSION['id']; // Assuming the TeamID is stored in the session variable 'id'
+?>
 <!DOCTYPE html>
 <html lang="en">
 

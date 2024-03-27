@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $updateStmt->bind_param("s", $id);
         $updateStmt->execute();
 
-        header("Location: /login/game.html");
+        header("Location: /login/game.php");
         exit();
     } else {
         echo "Invalid credentials. Please try again.";
