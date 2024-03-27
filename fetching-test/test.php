@@ -7,37 +7,44 @@
 </head>
 <body>
     <h1>Fetch Chapter Details</h1>
-    <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for="chapterId">Enter Chapter ID:</label>
-        <input type="text" id="chapterId" name="chapterId">
-        <button type="submit">Fetch Details</button>
-    </form>
-    <div id="chapterDetails">
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            if (isset($_GET["chapterId"])) {
-                $chapterId = $_GET["chapterId"];
-                $url = "index.php?id=" . urlencode($chapterId);
+    <label for="chapterId">Enter Chapter ID:</label>
+    <input type="text" id="chapterId" name="chapterId">
+    <button onclick="fetchChapterDetails()">Fetch Details</button>
+    <div id="chapterDetails"></div>
 
-                $response = file_get_contents($url);
-                if ($response !== false) {
-                    $data = json_decode($response, true);
-                    if ($data !== null && isset($data["id"], $data["description"], $data["journalUrl"])) {
-                        echo "<h2>Chapter Details</h2>";
-                        echo "<p><strong>ID:</strong> " . $data["id"] . "</p>";
-                        echo "<p><strong>Description:</strong> " . $data["description"] . "</p>";
-                        echo "<p><strong>Journal URL:</strong> <a href='" . $data["journalUrl"] . "' target='_blank'>" . $data["journalUrl"] . "</a></p>";
-                    } else {
-                        echo "<p>Error: Invalid chapter data received</p>";
+    <script>
+        function fetchChapterDetails() {
+            const chapterId = document.getElementById('chapterId').value;
+            const url = 'index.php?id=${chapterId}';
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch chapter details');
                     }
-                } else {
-                    echo "<p>Error: Failed to fetch chapter details</p>";
-                }
-            } else {
-                echo "<p>Error: Chapter ID not provided</p>";
-            }
+                    return response.json();
+                })
+                .then(data => {
+                    // Check if the response data contains the expected fields
+                    if (!data || !data.id || !data.description || !data.journalUrl) {
+                        throw new Error('Invalid chapter data received');
+                    }
+
+                    // Display chapter details
+                    const chapterDetailsElement = document.getElementById('chapterDetails');
+                    chapterDetailsElement.innerHTML = '
+                        <h2>Chapter Details</h2>
+                        <p><strong>ID:</strong> ${data.id}</p>
+                        <p><strong>Description:</strong> ${data.description}</p>
+                        <p><strong>Journal URL:</strong> <a href="${data.journalUrl}" target="_blank">${data.journalUrl}</a></p>
+                    ';
+                })
+                .catch(error => {
+                    console.error('Error fetching chapter details:', error);
+                    const chapterDetailsElement = document.getElementById('chapterDetails');
+                    chapterDetailsElement.innerHTML = '<p>Error fetching chapter details: ${error.message}</p>';
+                });
         }
-        ?>
-    </div>
+    </script>
 </body>
 </html>
