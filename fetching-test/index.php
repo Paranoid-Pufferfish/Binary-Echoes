@@ -17,7 +17,12 @@
         function fetchChapterDetails() {
             const chapterId = document.getElementById('chapterId').value;
             fetch('fetch.php?id=' + chapterId)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch chapter details');
+                }
+                return response.json();
+            })
             .then(data => {
                 // Display chapter details
                 const chapterDetailsElement = document.getElementById('chapterDetails');
@@ -30,7 +35,7 @@
             .catch(error => {
                 console.error('Error fetching chapter details:', error);
                 const chapterDetailsElement = document.getElementById('chapterDetails');
-                chapterDetailsElement.innerHTML = `<p>Error fetching chapter details</p>`;
+                chapterDetailsElement.innerHTML = `<p>Error fetching chapter details: ${error.message}</p>`;
             });
         }
     </script>
