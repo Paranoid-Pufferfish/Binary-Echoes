@@ -9,10 +9,11 @@
     <h1>Fetch Chapter Details</h1>
     <label for="chapterId">Enter Chapter ID:</label>
     <input type="text" id="chapterId" name="chapterId">
-    <button onclick="fetchChapterDetails()">Fetch Details</button>
+    <button id="fetchdetail">Fetch Details</button>
     <div id="chapterDetails"></div>
 
     <script>
+     const boutton = document.getElementById('fetchdetail');
         function fetchChapterDetails() {
             const chapterId = document.getElementById('chapterId').value;
             const url = 'index.php?id=${chapterId}';
@@ -45,6 +46,7 @@
                     chapterDetailsElement.innerHTML = '<p>Error fetching chapter details: ${error.message}</p>';
                 });
         }
+boutton.addEventListener("click", fetchChapterDetails);
     </script>
 </body>
 </html>
