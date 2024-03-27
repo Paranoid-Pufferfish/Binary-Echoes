@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $updateStmt->execute();
 
         // Redirect to a secure page or perform any other action
-        header("Location: success.php");
+        header("Location: /success.php");
         exit();
     } else {
         // Invalid credentials
