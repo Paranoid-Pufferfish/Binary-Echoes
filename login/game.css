@@ -19,15 +19,16 @@ body {
 
 }
 .container h1 img {
-    height: 40%;
-    width: 40%;
+    height: 100%;
+    width: 100%;
 }
 
 .menu {
     height: 506px;
     width: 271px;
+    display: flex;
+    flex-direction: column;
     padding: 16px;
-    padding-top: 25px;
     text-align:center;
     background-color: rgba(255, 255, 255, 0.068);
     backdrop-filter: blur(10px);
@@ -37,35 +38,44 @@ body {
 }
 
 
-.button2 , .button1{
+.button{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top:10px ;
-    width: 233px;
-    height: 52px;
+    width: 100%;
+    padding: 16px;
     text-align: left;
     padding-left: 15px;
     padding-right: 10px;
     font-family: "poppins";
-    background-color: rgba(255, 255, 255, 0.068);
-    border: none;
     border-radius: 8px;
     border: 1px solid rgba(95, 120, 126, 100%);
-    color: rgb(189, 199, 202);
-
-}
-.button2 button{
-    color: rgba(0, 0, 0, 0.739);
-    background-color: #ffffff00;
-    border: none;
-    font-size: large;
-}
-.button1 button{
     color: rgba(255, 253, 253, 0.739);
-    background-color: #ffffff00;
-    border: none;
+    background-color: #ffffff26;
     font-size: large;
+    cursor: pointer;
+}
+
+.button::after{
+    content:"";
+    height: 24px;
+    width: 24px;
+    background-image: url(image/flecheb.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.button.locked{
+    color: hsla(0, 0%, 0%, 0.705);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.button.locked::after{
+    background-image: url(image/lock.png);
 }
 
 
@@ -75,6 +85,7 @@ body {
 
 .chapitre{
     margin-top: 20px;
+    height: 100%;
 }
 
 .footer{
