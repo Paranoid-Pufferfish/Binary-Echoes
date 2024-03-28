@@ -17,7 +17,7 @@
         
         function fetchChapterDetails() {
             const chapterId = document.getElementById('chapterId').value;
-            const url = `index.php?id=${chapterId}`;
+            const url = `/php/fetch.php?id=${chapterId}`;
 
             fetch(url)
                 .then(response => {
@@ -28,7 +28,7 @@
                 })
                 .then(data => {
                     // Check if the response data contains the expected fields
-                    if (!data || !data.id || !data.description || !data.journalUrl) {
+                    if (!data || !data.id || !data.description || !data.journalUrl || !data.locked) {
                         throw new Error('Invalid chapter data received');
                     }
 
@@ -37,6 +37,7 @@
                     chapterDetailsElement.innerHTML = `
                         <h2>Chapter Details</h2>
                         <p><strong>ID:</strong> ${data.id}</p>
+                        <p><strong>locked:</strong> ${data.locked}</p>
                         <p><strong>Description:</strong> ${data.description}</p>
                         <p><strong>Journal URL:</strong> <a href="${data.journalUrl}" target="_blank">${data.journalUrl}</a></p>
                     `;

@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
     $chapter_id = $_GET['id'];
 
     // Prepare SQL statement to retrieve chapter data by ID
-    $stmt = $conn->prepare("SELECT description, code, journalUrl, id FROM Chapter WHERE id = ?");
+    $stmt = $conn->prepare("SELECT description, code, journalUrl, locked, id FROM Chapter WHERE id = ?");
     $stmt->bind_param("s", $chapter_id); // Assuming Chapter ID is a varchar
 
     // Execute the prepared statement

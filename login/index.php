@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
 }
 else {
-  header("Location: game.php");
+  header("Location: /login/game.php");
   exit();
 }
 ?>
@@ -21,7 +21,7 @@ else {
 </head>
 <body>
   <div class="container">
-    <form action="/test.php" class="login" method="post">
+    <form action="/login/connection.php" class="login" method="post">
       <h1><img src="image/logo.svg" alt="logo"></h1>
       
 <div class="main">
