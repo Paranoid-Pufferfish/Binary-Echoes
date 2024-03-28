@@ -15,40 +15,43 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if Chapter ID is provided in the GET request
-if (isset($_GET['id'])) {
-    $chapter_id = $_GET['id'];
+// Prepare SQL statement to retrieve chapter data
+$stmt = $conn->prepare("SELECT id, description, journalUrl, locked FROM Chapter");
 
-    // Prepare SQL statement to retrieve chapter data by ID
-    $stmt = $conn->prepare("SELECT description, code, journalUrl, locked, id FROM Chapter WHERE id = ?");
-    $stmt->bind_param("s", $chapter_id); // Assuming Chapter ID is a varchar
+// Execute the prepared statement
+$stmt->execute();
 
-    // Execute the prepared statement
-    $stmt->execute();
+// Store the result
+$result = $stmt->get_result();
 
-    // Store the result
-    $result = $stmt->get_result();
+// Check if any chapters are found
+if ($result->num_rows > 0) {
+    // Create an array to store all chapters
+    $chapters = array();
 
-    // Check if a matching chapter is found
-    if ($result->num_rows == 1) {
-        // Fetch data
-        $chapter_data = $result->fetch_assoc();
+    // Fetch data for each chapter
+    while ($row = $result->fetch_assoc()) {
+        // Check if the chapter is locked
+        if ($row['locked'] == true) {
+            // Remove unnecessary data
+            unset($row['description']);
+            unset($row['journalUrl']);
+        }
 
-        // Close statement
-        $stmt->close();
-
-        // Close connection
-        $conn->close();
-
-        // Output chapter data as JSON
-        header('Content-Type: application/json');
-        echo json_encode($chapter_data);
-    } else {
-        // Chapter not found
-        echo json_encode(array("error" => "Chapter not found"));
+        // Add the chapter to the array
+        $chapters[] = $row;
     }
+
+    // Close statement
+    $stmt->close();
+
+    // Close connection
+    $conn->close();
+
+    // Output chapters data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($chapters);
 } else {
-    // Chapter ID not provided
-    echo json_encode(array("error" => "Chapter ID not provided"));
+    // No chapters found
+    echo json_encode(array("error" => "No chapters found"));
 }
-?>
