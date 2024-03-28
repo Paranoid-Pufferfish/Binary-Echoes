@@ -10,7 +10,7 @@ $database = "u209047910_echoes";
 
 // Establish database connection
 $conn = new mysqli($host, $username, $password, $database);
-/ Check connection
+// Check connection
 if ($conn->connect_error) {
     $error_message = "Connection failed: " . $conn->connect_error;
     http_response_code(500);
@@ -71,4 +71,5 @@ if (isset($_GET['id'])) {
     echo json_encode(array("error" => "Chapter ID not provided"));
     exit();
 }
+
 ?>
