@@ -4,8 +4,8 @@ header("Access-Control-Allow-Headers: *");
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('connection.php');
-$id = $_SESSION['id'];
-
+//$id = $_SESSION['id'];
+$id = "Team Zarbou3i";
 $host = "srv1160.hstgr.io";
 $username = "u209047910_echoes";
 $password = "Echoes123#";
