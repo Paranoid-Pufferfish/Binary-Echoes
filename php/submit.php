@@ -27,17 +27,6 @@ function addTeamToSubmits($teamId, $chapterId, $chapterCode, $dbConnection) {
     }
 }
 
-function hasUnlockedChapter($teamId, $chapterId, $dbConnection) {
-    // Requête pour vérifier si l'équipe a soumis ce chapitre
-    $query = "SELECT * FROM Submits WHERE teamId = ? AND chapterId = ?";
-    $stmt = $dbConnection->prepare($query);
-    $stmt->bind_param("ss", $teamId, $chapterId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    // Retourner vrai si le chapitre est débloqué par l'équipe, faux sinon
-    return $result->num_rows > 0;
-}
 
 // Fonction pour récupérer les chapitres débloqués par une équipe
 function getUnlockedChapters($teamId, $dbConnection) {
@@ -69,16 +58,7 @@ $chapterCode = $_GET['chapterCode'] ?? '';
 
 $function = $_GET['function'] ?? '';
 
-if ($function === 'hasUnlockedChapter') {
-    if (hasUnlockedChapter($teamId, $chapterId, $conn)) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-
-    header('Content-Type: application/json'); // Set the content type to JSON
-    echo json_encode($result);
-} elseif ($function === 'getUnlockedChapters') {
+if ($function === 'getUnlockedChapters') {
     $unlockedChapters = getUnlockedChapters($teamId, $conn);
     header('Content-Type: application/json'); // Set the content type to JSON
     echo json_encode($unlockedChapters);

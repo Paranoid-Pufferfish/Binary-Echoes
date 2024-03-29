@@ -22,7 +22,7 @@ else {
 <body>
   <div class="container">
     <form action="/php/connection.php" class="login" method="post">
-      <h1><img src="image/logo.svg" alt="logo"></h1>
+      <h1><img src="login/image/logo.svg" alt="logo"></h1>
       
 <div class="main">
   <hr>
