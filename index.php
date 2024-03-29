@@ -58,21 +58,7 @@
   }
 });
 </script>
-<link rel="stylesheet" type="text/css" href="css/style.css">
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Special Elite', cursive;
-            font-size: 50px;
-            text-align: center;
-            margin-top: 20%;
-        }
-        h1 {
-            position: absolute;
-            text-shadow: 0 0 10px #69181a;
-            color: #69181a;
-        }
         #layer-first {
             z-index: 1;
             animation: one 0.3s infinite;
@@ -89,20 +75,20 @@
 
         }
 
-
-        @keyframes one {
+ @keyframes one {
 
             0% {
                 transform: translateX(-20px);
             }
             20% {
                 transform: translateX(20px);
+                background-color: #69181a;
                 text-shadow: 0 0 30px #69181a;
 
                 clip-path: polygon(0 0, 100% 0, 100% 31%, 0 31%);
 
             }
-            
+
         }
         @keyframes two {
             
