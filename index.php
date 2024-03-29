@@ -59,6 +59,79 @@
 });
 </script>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Special Elite', cursive;
+            font-size: 50px;
+            text-align: center;
+            margin-top: 20%;
+        }
+        h1 {
+            position: absolute;
+            text-shadow: 0 0 10px #69181a;
+            color: #69181a;
+        }
+        #layer-first {
+            z-index: 1;
+            animation: one 0.3s infinite;
+
+        }
+        #layer-second {
+            z-index: 2;
+            animation: two 0.3s infinite;
+
+        }
+        #layer-third {
+            z-index: 3;
+            animation: three 0.3s infinite;
+
+        }
+
+
+        @keyframes one {
+
+            0% {
+                transform: translateX(-20px);
+            }
+            20% {
+                transform: translateX(20px);
+                text-shadow: 0 0 30px #69181a;
+
+                clip-path: polygon(0 0, 100% 0, 100% 31%, 0 31%);
+
+            }
+            
+        }
+        @keyframes two {
+            
+            20% {
+                clip-path: polygon(0 61%, 100% 61%, 100% 100%, 0 100%);
+                transform: translateX(-10px);
+            }
+            60% {
+                clip-path: polygon(0 61%, 100% 61%, 100% 100%, 0 100%);
+                transform: translateX(30px);
+            }
+        }
+        @keyframes three {
+            20% {
+                clip-path: polygon(0 35%, 100% 33%, 100% 48%, 0 49%);
+                transform: translateX(-5px);
+
+            }
+            60% {
+                clip-path: polygon(0 35%, 100% 33%, 100% 48%, 0 49%);
+                transform: translateX(25px);
+            }
+            70% {
+                clip-path: polygon(0 35%, 100% 33%, 100% 48%, 0 49%);
+                transform: translateX(5px);
+            }
+            
+        }
+    </style>
 </head>
 <body>
   <audio id="myAudio" autoplay loop>
@@ -67,10 +140,14 @@
     </audio>
 
     <div class="glitch-container">
-        <h1 class="glitch"><span>It's moving...It's</span></h1>
+    <span class="glitch">
+        <h1 id="layer-first">It's moving...It's</h1>
+        <h1 id="layer-second">It's moving...It's</h1>
+        <h1 id="layer-third">It's moving...It's</h1>
         <h1 class="glitchy-h1"><span>alive</span></h1>
         <br><br><br>
         <h2 class="glitch"><span>Coming</span> <span>Soon</span>...</h2>
+	</span>
     </div>
 </body>
 </html>
