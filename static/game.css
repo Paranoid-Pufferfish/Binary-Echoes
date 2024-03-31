@@ -1,0 +1,331 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poor story", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  min-height: 100vh;
+  background-image: url(./images/background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container h1 img {
+  height: 50%;
+  width: 50%;
+}
+
+#logo {
+  height: 96px;
+  background-image: url(images/logo.svg);
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(54, 84, 93, 100%);
+  font-size: 0px;
+}
+
+header {
+  height: 506px;
+  width: 271px;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  padding: 16px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.068);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 2px solid rgba(95, 120, 126, 100%);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 8px;
+}
+
+.chapter-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "poppins";
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(95, 120, 126, 25%);
+  color: rgba(255, 253, 253, 0.739);
+  background-color: hsla(0, 0%, 100%, 0.05);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chapter-button.selected {
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.chapter-button::after {
+  content: "";
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.chapter-button.locked {
+  opacity: 0.5;
+  color: hsla(0, 0%, 0%, 0.705);
+  pointer-events: none;
+}
+
+.chapter-button.locked::after {
+  background-image: url(images/lock.png);
+}
+
+.chapter-button.checked::after {
+  background-image: url(images/checked.png) !important;
+  background: hsla(0, 0%, 100%, 0.1);
+  border-radius: 8px;
+  padding: 4px;
+  background-position: center;
+}
+
+.footer {
+  color: rgb(189, 199, 202);
+  font-family: "poppins";
+  font-size: 12px;
+}
+
+main {
+  height: 506px;
+  width: 575px;
+  padding: 16px;
+  padding-top: 25px;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.068);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 2px solid rgba(95, 120, 126, 100%);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  color: rgb(189, 199, 202);
+}
+
+main.empty {
+  background-image: url(images/logo-background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.chapter-header {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+form {
+  padding-top: 0;
+  display: flex;
+  gap: 8px;
+}
+
+form input {
+  width: 100%;
+  padding: 8px 16px;
+  background: rgba(68, 98, 105, 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgb(189, 199, 202);
+  font-size: 12px;
+  font-family: "poppins";
+}
+
+form input.error {
+  border-color: #ff9200;
+  color: #ff9200;
+}
+
+form input.checked {
+  padding: 16px;
+}
+
+form input::placeholder {
+  font-size: larger;
+  color: #ffffff94;
+}
+
+form button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  width: 147px;
+  padding: 8px 16px;
+  background-color: rgb(229, 185, 57, 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  font-family: "poppins";
+  font-size: 16px;
+  color: #3b2b08;
+}
+
+form button::after {
+  content: "";
+  height: 16px;
+  width: 16px;
+  background-image: url(images/flechen.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+form + p {
+  display: none;
+  margin-top: 16px;
+  color: #ff9200;
+}
+
+/* Chapters content */
+#chapter-container {
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.chapter-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.chapter-section {
+}
+
+.chapter-section h2 {
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(54, 84, 93, 100%);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.chapter-start a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  padding: 16px;
+  gap: 16px;
+  background: rgb(80 105 110 / 50%);
+  border-radius: 8px;
+  border: 1px solid rgba(95, 120, 126, 100%);
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: "Poor story", sans-serif;
+}
+
+.chapter-start a::before {
+  content: "";
+  height: 24px;
+  width: 24px;
+  background-image: url(images/begin.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#loader-container {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  height: 100vh;
+  width: 100vw;
+  background:hsla(0, 0%, 0%, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+#loader-container div {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #56CFC9;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Reponseive */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+    padding: 24px;
+  }
+  #chapter-container {
+    gap: 16px;
+  }
+
+  #chapter-content {
+    width: auto !important;
+  }
+
+  header {
+    width: 100%;
+    height: auto !important;
+  }
+
+  main {
+    width: 100%;
+    height: auto !important;
+  }
+
+  main.empty {
+    height: 500px !important;
+    background-size: 60%;
+  }
+  
+  nav {
+    height: auto !important;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  form input {
+    height: 50px;
+  }
+
+  form button {
+    height: 50px;
+    width: 100%;
+  }
+}
