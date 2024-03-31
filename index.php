@@ -67,10 +67,14 @@
     </audio>
 
     <div class="glitch-container">
-        <h1 class="glitch"><span>It's moving...It's</span></h1>
+        <div class="glitch-container__title">
+            <h1 id="layer-first" >It's moving...It's</h1>
+            <h1 id="layer-second">It's moving...It's</h1>
+            <h1 id="layer-third" >It's moving...It's</h1>
+        </div>
+        <!-- <h1 class="glitch"><span>It's moving...It's</span></h1> -->
         <h1 class="glitchy-h1"><span>alive</span></h1>
         <br><br><br>
         <h2 class="glitch"><span>Coming</span> <span>Soon</span>...</h2>
     </div>
 </body>
-</html>
