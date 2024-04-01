@@ -1,0 +1,51 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poor story", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(image/background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.main {
+  height: auto;
+  width: 60%;
+  display: flex;
+  flex-direction:row;
+  padding: 24px;
+  text-align: center;
+  background-color: rgba(162, 16, 16, 0.068);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 2px solid rgba(95, 120, 126, 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.528);
+  color: rgba(201, 212, 212, 0.684);
+  font-size:larger;
+  line-height: 30px;
+}
+.main a{
+    text-decoration: none;
+    color: rgba(201, 212, 212, 0.684);
+    cursor: text;
+}
+
+button{
+    height: 30px;
+    width: 250px;
+    margin-top: 20px;
+    background-color: rgba(162, 16, 16, 0.068);
+    border: none;
+    color: rgba(201, 212, 212, 0.684);
+    border-radius: 10px;
+    border: 2px solid rgba(95, 120, 126, 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.528);
+}
