@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="chapter-section chapter-start">
-                    <a href="" id="chapter-pdf" download target="_blank">
+                    <a href="" id="chapter-pdf"  target="_blank">
                         Start now
                     </a>
                 </div>
