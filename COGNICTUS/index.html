@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>COGNICTUS BCI LABS</title>
+<title>IT Technologies</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
@@ -29,48 +29,59 @@
             <li class="m1"><a href="index.html" class="active">Home</a></li>
             <li class="m2"><a href="about-us.html">About</a></li>
             <li class="m3"><a href="services.html">Services</a></li>
-
+            <li class="m4"><a href="support.html">Support</a></li>
+            <li class="m5"><a href="contact-us.html">contacts</a></li>
           </ul>
         </div>
         <div class="row-3"><img src="images/slogan.gif" alt="" />
+            <fieldset>
+                <div>
+                    <select name="produits" id="produits">
+                        <option value="">Sélectionner un produit Neuralink</option>
+                        <!-- Séries TETA -->
+                        <optgroup label="Séries TETA">
+                            <option value="TETA-X23000h">TETA-X23000h</option>
+                            <option value="TETA-X25000i">TETA-X25000i</option>
+                            <option value="TETA-X28000j">TETA-X28000j</option>
+                            <option value="THETA X300">THETA-X300</option>
+                        </optgroup>
+                        <!-- Séries NeuroLink -->
+                        <optgroup label="Séries NeuroLink">
+                            <option value="NeuroLink-9000X">NeuroLink-9000X</option>
+                            <option value="NeuroLink-9200Y">NeuroLink-9200Y</option>
+                            <option value="NeuroLink-9500Z">NeuroLink-9500Z</option>
+                        </optgroup>
+                        <!-- Séries SynaptoVision -->
+                        <optgroup label="Séries SynaptoVision">
+                            <option value="SynaptoVision-X">SynaptoVision-X</option>
+                            <option value="SynaptoVision-Y">SynaptoVision-Y</option>
+                            <option value="SynaptoVision-Z">SynaptoVision-Z</option>
+                        </optgroup>
+                        <!-- Séries NeuroSync -->
+                        <optgroup label="Séries NeuroSync">
+                            <option value="NeuroSync-Plus">NeuroSync-Plus</option>
+                            <option value="NeuroSync-Elite">NeuroSync-Elite</option>
+                            <option value="NeuroSync-Ultimate">NeuroSync-Ultimate</option>
+                        </optgroup>
+                        <!-- Séries CerebroMesh -->
+                        <optgroup label="Séries CerebroMesh">
+                            <option value="CerebroMesh-ULTRA">CerebroMesh-ULTRA</option>
+                            <option value="CerebroMesh-PRO">CerebroMesh-PRO</option>
+                            <option value="CerebroMesh-LITE">CerebroMesh-LITE</option>
+                        </optgroup>
+                    </select>
+                    <button id="telecharger">Ouvrir</button>
+                </div>
+            </fieldset>
 
-              <div class="select">
-                <select name="produits" id="produits">
-                  <option value="">Sélectionner un produit COGNICTUS BCI LABS”</option>
-                  <!-- Séries TETA -->
-                  <optgroup label="Séries TETA">
-                      <option value="TETA-X23000h">TETA-X23000h</option>
-                      <option value="TETA-X25000i">TETA-X25000i</option>
-                      <option value="TETA-X28000j">TETA-X28000j</option>
-                      <option value="THETA X300">THETA-X300</option>
-                  </optgroup>
-                  <!-- Séries NeuroLink -->
-                  <optgroup label="Séries NeuroLink">
-                      <option value="NeuroLink-9000X">NeuroLink-9000X</option>
-                      <option value="NeuroLink-9200Y">NeuroLink-9200Y</option>
-                      <option value="NeuroLink-9500Z">NeuroLink-9500Z</option>
-                  </optgroup>
-                  <!-- Séries SynaptoVision -->
-                  <optgroup label="Séries SynaptoVision">
-                      <option value="SynaptoVision-X">SynaptoVision-X</option>
-                      <option value="SynaptoVision-Y">SynaptoVision-Y</option>
-                      <option value="SynaptoVision-Z">SynaptoVision-Z</option>
-                  </optgroup>
-                  <!-- Séries NeuroSync -->
-                  <optgroup label="Séries NeuroSync">
-                      <option value="NeuroSync-Plus">NeuroSync-Plus</option>
-                      <option value="NeuroSync-Elite">NeuroSync-Elite</option>
-                      <option value="NeuroSync-Ultimate">NeuroSync-Ultimate</option>
-                  </optgroup>
-                  <!-- Séries CerebroMesh -->
-                  <optgroup label="Séries CerebroMesh">
-                      <option value="CerebroMesh-ULTRA">CerebroMesh-ULTRA</option>
-                      <option value="CerebroMesh-PRO">CerebroMesh-PRO</option>
-                      <option value="CerebroMesh-LITE">CerebroMesh-LITE</option>
-                  </optgroup>
-              </select>
-              <button id="telecharger">Ouvrir</button>
-              </div>
+            <script>
+                document.getElementById("telecharger").addEventListener("click", function() {
+                    var selectedProduct = document.getElementById("produits").value;
+                    if (selectedProduct === "THETA X300") {
+                        window.location.href = "https://echoes.bwbejaia.com/static/pdfs/carnet.pdf";
+                    }
+                });
+            </script>
         </div>
       </div>
       <!-- CONTENT -->
@@ -110,54 +121,35 @@
       <div id="footer">
         <div id="output">
           <script>
-          var text = "$$$R$$T$1$P$$$$M$1$X$$$X$X$X$$X$$$$$X";
-          var output = document.getElementById("output");
-          
-          function updateText() {
-            var newText = "";
-            for (var i = 0; i < text.length; i++) {
-              if (text[i] === "$") {
-                var randomChar = getRandomChar();
-                newText += randomChar;
-              } else {
-                newText += "<span class='fixed'>" + text[i] + "</span>";
-              }
+            var text = "$$$R$$T$1$P$$$$M$1$X$$$X$X$X$$X$$$$$X";
+            var output = document.getElementById("output");
+    
+            function updateText() {
+                var newText = "";
+                for (var i = 0; i < text.length; i++) {
+                    if (text[i] === "$") {
+                        var randomChar = getRandomChar();
+                        newText += randomChar;
+                    } else {
+                        newText += "<span class='fixed'>" + text[i] + "</span>";
+                    }
+                }
+                output.innerHTML = newText;
             }
-            output.innerHTML = newText;
-          }
-          
-          function getRandomChar() {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var randomIndex = Math.floor(Math.random() * chars.length);
-            return chars[randomIndex];
-          }
-          
-          setInterval(updateText, 160);
-          </script>
+    
+            function getRandomChar() {
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                var randomIndex = Math.floor(Math.random() * chars.length);
+                return chars[randomIndex];
+            }
+    
+            setInterval(updateText,160);
+        </script>
       </div>
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript"> Cufon.now(); </script>
 </body>
-<script>
-  function telechargerPDF() {
-  var produitSelectionne = document.getElementById("produits").value;
-  if (produitSelectionne === "THETA X300") {
-    var urlPDF = "https://echoes.bwbejaia.com/static/pdfs/THETA-X300.pdf"
-    var nomPDF = "THETA_X300.pdf";
-    var btn = document.createElement("a");
-    btn.href = urlPDF;
-    btn.download = nomPDF;
-    document.body.appendChild(btn);
-    btn.click();
-    document.body.removeChild(btn);
-  }
-}
-
-document
-  .getElementById("telecharger")
-  .addEventListener("click", telechargerPDF);
-</script>
-
 </html>
