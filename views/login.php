@@ -34,7 +34,7 @@
             <ul>
                 <a href="https://www.instagram.com/bwb.club"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/company/binary-world-bejaia/about/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/binaryworldbejaia"><i class="fab fa-facebook"></i></a>
             </ul>
             © 2024 Binary World Bejaia
         </footer>
