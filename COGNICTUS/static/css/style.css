@@ -58,11 +58,11 @@
   }
 });
 </script>
-<link rel="stylesheet" type="text/css" href="/COGNICTUS/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
   <audio id="myAudio" autoplay loop>
-        <source src="/COGNICTUS/static/audio/1.wav" type="audio/wav">
+        <source src="src/audio/1.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
 
