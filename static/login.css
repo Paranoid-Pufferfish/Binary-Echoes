@@ -164,6 +164,7 @@ form p {
     min-height: auto;
     padding: 24px;
     background-size: cover;
+    min-height: 100vh;
   }
   #chapter-container {
     gap: 16px;
