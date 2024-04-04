@@ -151,10 +151,10 @@ document.addEventListener("DOMContentLoaded", async function () {
       .catch((error) => {
         chapterUI.formError.style.display = "block";
         chapterUI.formError.innerText =
-          "An error occurred while sending the request! ⚠️ Please try again after refreshing the page";
+          "An error occurred while sending the request! ⚠️ You will be redirected to the login page in no time";
         setTimeout(() => {
           location.reload();
-        }, 200); // Refresh the page after 2 seconds
+        }, 2000); // Refresh the page after 2 seconds
       });
     hideLoader();
   });
