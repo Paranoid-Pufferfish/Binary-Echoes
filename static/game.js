@@ -126,25 +126,35 @@ document.addEventListener("DOMContentLoaded", async function () {
     await fetch(API_BASE_URL + "/submit.php", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded",
       },
       body: `chapterId=${chapter.id}&code=${code}`,
     })
       .then((response) => response.text())
       .then((result) => {
-        const success = JSON.parse(result).success;
-        if (success == "true") {
-          markChapterAsChecked(chapter.id);
+      const success = JSON.parse(result).success;
+      const message = JSON.parse(result).message;
+      if (success == "true") {
+        markChapterAsChecked(chapter.id);
+      } else {
+        if (message === "Team has already submitted for this chapter") {
+        chapterUI.input.classList.add("error");
+        chapterUI.formError.style.display = "block";
+        chapterUI.formError.innerText = "Team has already submitted for this chapter ⚠️ Please Refresh the page";
         } else {
-          chapterUI.input.classList.add("error");
-          chapterUI.formError.style.display = "block";
-          chapterUI.formError.innerText = "Invalid code ! ⚠️";
+        chapterUI.input.classList.add("error");
+        chapterUI.formError.style.display = "block";
+        chapterUI.formError.innerText = "Invalid code ! ⚠️";
         }
+      }
       })
       .catch((error) => {
         chapterUI.formError.style.display = "block";
         chapterUI.formError.innerText =
-          "An error occured while sending the request ! ⚠️";
+          "An error occurred while sending the request! ⚠️ You will be redirected to the login page in no time";
+        setTimeout(() => {
+          location.reload();
+        }, 2000); // Refresh the page after 2 seconds
       });
     hideLoader();
   });
