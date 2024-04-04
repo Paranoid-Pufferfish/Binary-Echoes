@@ -54,15 +54,32 @@ function getUnlockedChapters($teamId, $dbConnection)
     return $unlockedChapters;
 }
 
+function hasTeamSubmittedForChapter($teamId, $chapterId, $dbConnection)
+{
+    $query = "SELECT COUNT(*) as count FROM Submits WHERE teamId = ? AND chapterId = ?";
+    $stmt = $dbConnection->prepare($query);
+    $stmt->bind_param("ss", $teamId, $chapterId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    return $row['count'] > 0;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $chapterId = $_POST['chapterId'] ?? '';
     $chapterCode = $_POST['code'] ?? '';
-    $result = addTeamToSubmits($teamId, $chapterId, $chapterCode, $conn);
 
-    if($result === true) {
-        echo json_encode(["success"=> "true"]);
+    if (hasTeamSubmittedForChapter($teamId, $chapterId, $conn)) {
+        echo json_encode(["success"=> "false", "message" => "Team has already submitted for this chapter"]);
     } else {
-        echo json_encode(["success"=> "false"]);
+        $result = addTeamToSubmits($teamId, $chapterId, $chapterCode, $conn);
+
+        if($result === true) {
+            echo json_encode(["success"=> "true"]);
+        } else {
+            echo json_encode(["success"=> "false"]);
+        }
     }
 }
 $conn->close();
