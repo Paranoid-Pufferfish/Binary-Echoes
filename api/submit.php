@@ -13,9 +13,10 @@ $teamId = $_SESSION['id'];
 
 function addTeamToSubmits($teamId, $chapterId, $chapterCode, $dbConnection)
 {
+    $code_digest = hash('sha256', $chapterCode);
     $query = "SELECT id FROM Chapter WHERE id = ? AND code = ?";
     $stmt = $dbConnection->prepare($query);
-    $stmt->bind_param("ss", $chapterId, $chapterCode);
+    $stmt->bind_param("ss", $chapterId, $code_digest);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -58,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $chapterId = $_POST['chapterId'] ?? '';
     $chapterCode = $_POST['code'] ?? '';
     $result = addTeamToSubmits($teamId, $chapterId, $chapterCode, $conn);
-
     if($result === true) {
         echo json_encode(["success"=> "true"]);
     } else {
