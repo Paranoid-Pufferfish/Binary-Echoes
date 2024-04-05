@@ -63,18 +63,6 @@ header{
   width: 100%;
 }
 
-button , button a{
-  height: 30px;
-  width: 30px;
-  margin-top: 20px;
-  background-color: rgba(201, 212, 212, 0);
-  border: none;
-  color: rgba(201, 212, 212, 0);
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  -webkit-user-select: none;
-}   
 
 header {
   display: flex;
