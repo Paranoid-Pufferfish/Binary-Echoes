@@ -136,6 +136,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       const message = JSON.parse(result).message;
       if (success == "true") {
         markChapterAsChecked(chapter.id);
+        if (chapter.id === 3) {
+          chapterUI.formError.style.display = "block";
+          chapterUI.formError.innerText = "Chapter unlocked! Redirecting...";
+          setTimeout(() => {
+        window.location.href = "https://echoes.bwbejaia.com/chapters/3/layer3-fin.html";
+          }, 2000); // Redirect after 2 seconds
+        }
       } else {
         if (message === "Team has already submitted for this chapter") {
         chapterUI.input.classList.add("error");
