@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECHOES: Chapter 3</title>
+    <link rel="icon" type="images/x-icon" href="../1/image/favicon.ico" />
+    <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+  <style>
+   #output {
+     color: #fff;
+     font-family: "JetBrains Mono";
+   }
+   .fixed {
+     color: #f00;
+   }
+  </style>
+</head>
+<body>
+    <header>
+        <h1><img src="../../static/images/The Lair Of Evil Steg.png" height="220px" title="Exif Data"></h1>
+        <div class="language-toggle">
+        <a href="layer3.html">English</a>
+      </div>
+      </header>
+    <div class="main">
+        <p>
+          Confus et effrayé,<s>git</s> Bryan se retrouve seul dans ce sinistre sous-sol d'un laboratoire abandonné. "Les gars ? Maya ! Marcus !" crie-t-il, mais seul le silence lui répond, hantant les lieux. Il commence à courir, cherchant partout ses amis, qui ont tous disparu à présent, jusqu'à se retrouver devant une grande porte verrouillée avec un motif. Il explore plusieurs pièces où il trouvera des <s>clone</s>documents qui attirent son attention, et avec un sentiment de déjà vu, il se souvient de morceaux de documents et de puzzles (énigme). Une voix familière résonne derrière la porte, le poussant à y entrer en courant. En entrant, Bryan examine le laboratoire qui lui semble familier <s>dr-bryan/</s>même s'il sait pertinemment qu'il n'a jamais été ici. Parmi les ordinateurs portables poussiéreux et les machines vacillantes, les gémissements et les pleurs se transforment en cris étouffés. Confus et effrayé, il se précipite pour délier son ami de longue date, James. "Pourquoi <s>sample-project</s>m'as-tu fait ça ?! Comment peux-tu me faire du mal de cette manière ?” crie James en essayant de se lever. Confus, Bryan répond en criant : "De quoi parles-tu même ?" "Tu m'as enfermé ici, Bry !"
+ "Ce n'est pas vrai ! Nous devons chercher Maya et Marcus, James, s'il te plaît, ils étaient ici avec moi, nous devons les trouver."
+ "Bryan ! Arrête ! Personne n'est ici ! Ils sont dans un autre pays, ils ont déménagé." La réalité submerge Bryan ; il est effrayé et perdu.
+
+        </p>
+    </div>
+      <div id="output">
+              <script>
+                var text = "$$$T$$o$b$e$$$$C$o$n$$$t$i$n$$u$$e$$d";
+                var output = document.getElementById("output");
+
+                function updateText() {
+                  var newText = "";
+                  for (var i = 0; i < text.length; i++) {
+                    if (text[i] === "$") {
+                      var randomChar = getRandomChar();
+                      newText += randomChar;
+                    } else {
+                      newText += "<span class='fixed'>" + text[i] + "</span>";
+                    }
+                  }
+                  output.innerHTML = newText;
+                }
+
+                function getRandomChar() {
+                  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                  var randomIndex = Math.floor(Math.random() * chars.length);
+                  return chars[randomIndex];
+                }
+
+                setInterval(updateText, 160);
+              </script>
+      </div>
+
+</body>
+</html>
